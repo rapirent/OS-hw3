@@ -63,11 +63,11 @@ int main(int argc, char *argv[])
 		exit(1);
 	}
 	// printf("%s\n", port);
-	if((sockfd = socket(res->ai_family, res->ai_socktype, res->ai_protocol))==-1)
-	{
-		fprintf(stderr, "init create socket error!\n");
-		exit(1);
-	}
+	// if((sockfd = socket(res->ai_family, res->ai_socktype, res->ai_protocol))==-1)
+	// {
+	// 	fprintf(stderr, "init create socket error!\n");
+	// 	exit(1);
+	// }
 //
 	for(p = res; p != NULL; p = p->ai_next)
 	{
