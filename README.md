@@ -7,29 +7,26 @@
 ##  Usage:
 -  makefile:
 
-'''
-make
-'''
+  make
 
 -  open server:
 
-'''
-Usage: ./server \[-s server\] \[-p port\] \[-h\]
-  -s server: specify the server name or address, default: 127.0.0.1
-  -p port: specify the server port, default: 12345
-  -h :for print this help message
-'''
+
+  Usage: ./server \[-s server\] \[-p port\] \[-h\]
+    -s server: specify the server name or address, default: 127.0.0.1
+    -p port: specify the server port, default: 12345
+    -h :for print this help message
+
 
 - open client:
 
-'''
-Usage: ./client \[-u\] \[-r run\] \[-s server\] \[-p port\] \[-h\]
-  -u: create request by user input, default: random generation
-  -r run: how many request to send
-  -s server: specify the server name or address, default: 127.0.0.1
-  -p port: specify the server port, default: 12345
-  -h :for print this help message
-'''
+  Usage: ./client \[-u\] \[-r run\] \[-s server\] \[-p port\] \[-h\]
+    -u: create request by user input, default: random generation
+    -r run: how many request to send
+    -s server: specify the server name or address, default: 127.0.0.1
+    -p port: specify the server port, default: 12345
+    -h :for print this help message
+    
     - as same as the usage of the original code assistant gave
     
 ## description&programming logic:
