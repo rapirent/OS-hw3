@@ -163,7 +163,7 @@ void *server_thread(void *socket)
 				size_t len = printf("%s", msg);
 				printf("\n");
 				// len--;
-				printf("send_size = %ld\n",len);
+				printf("send_size = %u\n",len);
 				if(write(socket_fd, &len, sizeof(size_t)) == -1)
 				{
 					fprintf(stderr,"send error, part1!%d\n",errno);
@@ -209,7 +209,7 @@ void *server_thread(void *socket)
 				size_t len = printf("%s", msg);
 				printf("\n");
 				// len--;
-				printf("send_size = %ld\n",len);
+				printf("send_size = %u\n",len);
 				if(write(socket_fd, &len, sizeof(size_t)) == -1)
 				{
 					fprintf(stderr,"send error, part1!%d\n",errno);
@@ -241,7 +241,7 @@ void *server_thread(void *socket)
 				size_t len = printf("%s", msg);
 				printf("\n");
 				// len--;
-				printf("send_size = %ld\n",len);
+				printf("send_size = %u\n",len);
 				if(write(socket_fd, &len, sizeof(size_t)) == -1)
 				{
 					fprintf(stderr,"send error, part1!%d\n",errno);
@@ -262,7 +262,7 @@ void *server_thread(void *socket)
 				size_t len = printf("%s", msg);
 				printf("\n");
 				// len--;
-				printf("send_size = %ld\n",len);
+				printf("send_size = %u\n",len);
 				if(write(socket_fd, &len, sizeof(size_t)) == -1)
 				{
 					fprintf(stderr,"send error, part1!%d\n",errno);
@@ -284,7 +284,7 @@ void *server_thread(void *socket)
 			size_t len = printf("%s", msg);
 			printf("\n");
 			// len--;
-			printf("send_size = %ld\n",len);
+			printf("send_size = %u\n",len);
 			if(write(socket_fd, &len, sizeof(size_t)) == -1)
 			{
 				fprintf(stderr,"send error, part1!%d\n",errno);
@@ -302,7 +302,7 @@ void *server_thread(void *socket)
 			size_t len = printf("%s", msg);
 			printf("\n");
 			// len--;
-			printf("send_size = %ld\n",len);
+			printf("send_size = %u\n",len);
 			if(write(socket_fd, &len, sizeof(size_t)) == -1)
 			{
 				fprintf(stderr,"send error, part1!%d\n",errno);
