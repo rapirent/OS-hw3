@@ -157,13 +157,50 @@ void *server_thread(void *socket)
 		{
 			domain[tolower_count]=tolower(domain[tolower_count]);
 		}
-		if(strncmp(opt,"SET",3)==0)
+        char *test=NULL;
+        if((test=strchr(domain,'.'))=='\0')
+        {
+            char *msg = "400 \"Bad Request\"";
+            size_t len = printf("%s", msg);
+            printf("\n");
+            // len--;
+            printf("send_size = %u\n",len);
+            if(write(socket_fd, &len, sizeof(size_t)) == -1)
+            {
+                fprintf(stderr,"send error, part1!%d\n",errno);
+                exit(1);
+            }
+            if(write(socket_fd, msg, len)==-1)
+            {
+                fprintf(stderr,"send error, part2!%d\n",errno);
+                exit(1);
+            }
+        }
+        else if((test-domain+1)==1)
+        {
+            char *msg = "400 \"Bad Request\"";
+            size_t len = printf("%s", msg);
+            printf("\n");
+            // len--;
+            printf("send_size = %u\n",len);
+            if(write(socket_fd, &len, sizeof(size_t)) == -1)
+            {
+                fprintf(stderr,"send error, part1!%d\n",errno);
+                exit(1);
+            }
+            if(write(socket_fd, msg, len)==-1)
+            {
+                fprintf(stderr,"send error, part2!%d\n",errno);
+                exit(1);
+            }
+        }
+		else if(strncmp(opt,"SET",3)==0)
 		{
 			// char domain[BUF_SIZE]={'\0'},ip_address[BUF_SIZE]={'\0'};
 			// sprintf(buf,"%s %s %s",opt,domain,ip_address);
 			int ip1=-1,ip2=-1,ip3=-1,ip4=-1;
 			sscanf(ip_address,"%d.%d.%d.%d",&ip1,&ip2,&ip3,&ip4);
-            if((ip1>=256||ip1<0)||(ip2>=256||ip2<0)||(ip3>=256||ip3<0)||(ip4>=256||ip4<0)||(strchr(domain,'.')=='\0'))
+            if((ip1>=256||ip1<0)||(ip2>=256||ip2<0)||(ip3>=256||ip3<0)||(ip4>=256||ip4<0))
 			{
 				char *msg = "400 \"Bad Request\"";
 				size_t len = printf("%s", msg);
@@ -231,24 +268,6 @@ void *server_thread(void *socket)
 		else if(strncmp(opt, "GET", 3)==0)
 		{
 			int count=0,domain_len=strlen(domain),founded = 0;
-            if(strchr(domain,'.')=='\0')
-            {
-                char *msg = "400 \"Bad Request\"";
-                size_t len = printf("%s", msg);
-                printf("\n");
-                // len--;
-                printf("send_size = %u\n",len);
-                if(write(socket_fd, &len, sizeof(size_t)) == -1)
-                {
-                    fprintf(stderr,"send error, part1!%d\n",errno);
-                    exit(1);
-                }
-                if(write(socket_fd, msg, len)==-1)
-                {
-                    fprintf(stderr,"send error, part2!%d\n",errno);
-                    exit(1);
-                }
-            }
 			pthread_mutex_lock(&mutex);
 			for(;count<stack_top;count++)
 			{
