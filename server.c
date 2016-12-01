@@ -158,7 +158,7 @@ void *server_thread(void *socket)
 			domain[tolower_count]=tolower(domain[tolower_count]);
 		}
         char *test=NULL;
-        if((strncmp(opt, "INFO", 4)!=0)||(strncmp(opt, "GET", 3)!=0)||(strncmp(opt, "SET", 3)!=0))
+        if((strncmp(opt, "INFO", 4)!=0)&&(strncmp(opt, "GET", 3)!=0)&&(strncmp(opt, "SET", 3)!=0))
         {
             char *msg = "405 \"Method Not Allowed\"";
             size_t len = printf("%s", msg);
