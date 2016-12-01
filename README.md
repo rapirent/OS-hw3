@@ -22,8 +22,6 @@
 ```
 
 - open client:
-    - as same as the usage of the original code assistant gave
-
 
 ```
 ./client \[-u\] \[-r run\] \[-s server\] \[-p port\] \[-h\]
@@ -33,6 +31,8 @@
   -p port: specify the server port, default: 12345
   -h :for print this help message
 ```
+
+    - as same as the usage of the original code assistant gave
 
 ## description&programming logic:
 ### server.c:

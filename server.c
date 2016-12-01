@@ -9,6 +9,7 @@
 #include <pthread.h>
 #include <netinet/in.h>
 #include <errno.h>
+#include <ctype.h>
 
 #define BACKLOG 20 //queue length for waiting connection
 #define BUF_SIZE 2048
@@ -151,6 +152,11 @@ void *server_thread(void *socket)
 		printf("buf=%s\n",buf);
 		char domain[BUF_SIZE]={'\0'},ip_address[BUF_SIZE]={'\0'},opt[BUF_SIZE]={'\0'};
 		sscanf(buf,"%s %s %s",opt,domain,ip_address);
+		int tolower_count;
+		for(tolower_count=0;domain[tolower_count]!='\0';tolower_count++)
+		{
+			domain[tolower_count]=tolower(domain[tolower_count]);
+		}
 		if(strncmp(opt,"SET",3)==0)
 		{
 			// char domain[BUF_SIZE]={'\0'},ip_address[BUF_SIZE]={'\0'};
