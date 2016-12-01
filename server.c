@@ -163,7 +163,7 @@ void *server_thread(void *socket)
 			// sprintf(buf,"%s %s %s",opt,domain,ip_address);
 			int ip1=-1,ip2=-1,ip3=-1,ip4=-1;
 			sscanf(ip_address,"%d.%d.%d.%d",&ip1,&ip2,&ip3,&ip4);
-			if((ip1>=256||ip1<0)||(ip2>=256||ip2<0)||(ip3>=256||ip3<0)||(ip4>=256||ip4<0))
+            if((ip1>=256||ip1<0)||(ip2>=256||ip2<0)||(ip3>=256||ip3<0)||(ip4>=256||ip4<0)||(strchr(domain,'.')=='\0'))
 			{
 				char *msg = "400 \"Bad Request\"";
 				size_t len = printf("%s", msg);
