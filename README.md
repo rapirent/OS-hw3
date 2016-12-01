@@ -47,5 +47,5 @@
     處理特定accept進來的client，並且以while迴圈以read不斷抓取新的訊息，並write來傳輸回應
     每次先比對request字串，如果不是SET、GET、INFO其中一者，則傳回405訊息
     而每次都將domain name字串全部轉為小寫字母，以處理大小寫判別問題
-    又如果domain name中沒有找到任何'.'符號或是在第一個位置，則代表domain name錯誤
+    又如果domain name中沒有找到任何'.'符號或是其在第一個位置，則代表domain name錯誤
     每次while循環，將會以memset清除buf和buf_len之值
