@@ -158,6 +158,25 @@ void *server_thread(void *socket)
 			domain[tolower_count]=tolower(domain[tolower_count]);
 		}
         char *test=NULL;
+        if((strncmp(opt, "INFO", 4)!=0)||(strncmp(opt, "GET", 3)!=0)||(strncmp(opt, "SET", 3)!=0))
+        {
+            char *msg = "405 \"Method Not Allowed\"";
+            size_t len = printf("%s", msg);
+            printf("\n");
+            // len--;
+            printf("send_size = %u\n",len);
+            if(write(socket_fd, &len, sizeof(size_t)) == -1)
+            {
+                fprintf(stderr,"send error, part1!%d\n",errno);
+                exit(1);
+            }
+            if(write(socket_fd, msg, len)==-1)
+            {
+                fprintf(stderr,"send error, part2!%d\n",errno);
+                exit(1);
+            }
+            //error
+        }
         if((test=strchr(domain,'.'))=='\0')
         {
             char *msg = "400 \"Bad Request\"";
