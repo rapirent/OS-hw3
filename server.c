@@ -177,7 +177,7 @@ void *server_thread(void *socket)
             }
             //error
         }
-        if((test=strchr(domain,'.'))=='\0')
+        else if((test=strchr(domain,'.'))=='\0')
         {
             char *msg = "400 \"Bad Request\"";
             size_t len = printf("%s", msg);
