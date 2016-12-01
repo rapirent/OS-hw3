@@ -231,6 +231,24 @@ void *server_thread(void *socket)
 		else if(strncmp(opt, "GET", 3)==0)
 		{
 			int count=0,domain_len=strlen(domain),founded = 0;
+            if(strchr(domain,'.')=='\0')
+            {
+                char *msg = "400 \"Bad Request\"";
+                size_t len = printf("%s", msg);
+                printf("\n");
+                // len--;
+                printf("send_size = %u\n",len);
+                if(write(socket_fd, &len, sizeof(size_t)) == -1)
+                {
+                    fprintf(stderr,"send error, part1!%d\n",errno);
+                    exit(1);
+                }
+                if(write(socket_fd, msg, len)==-1)
+                {
+                    fprintf(stderr,"send error, part2!%d\n",errno);
+                    exit(1);
+                }
+            }
 			pthread_mutex_lock(&mutex);
 			for(;count<stack_top;count++)
 			{
